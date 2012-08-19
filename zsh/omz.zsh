@@ -37,7 +37,6 @@ zstyle ':omz:load' omodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'tmux' \
   'git' \
   'osx' \
   'syntax-highlighting' \
