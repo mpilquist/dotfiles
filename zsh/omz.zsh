@@ -39,11 +39,9 @@ zstyle ':omz:load' omodule \
   'completion' \
   'tmux' \
   'git' \
-  'z' \
   'osx' \
   'syntax-highlighting' \
   'history-substring-search' \
-  'prompt' \
 
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.

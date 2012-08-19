@@ -1,20 +1,32 @@
-# Sample gitconfig
-#
-# You probably want to change the [user] section here since you are not me.
-
 [hub]
         protocol = https
 [user]
-        name = Zach Holman
-        email = zach@zachholman.com
+        name = Michael Pilquist
+        email = mpilquist@gmail.com
 [credential]
         helper = osxkeychain
+[push]
+        default = tracking
 [alias]
         co = checkout
         promote = !$ZSH/bin/git-promote
         wtf     = !$ZSH/bin/git-wtf
         rank-contributers = !$ZSH/bin/git-rank-contributers
         count   = !git shortlog -sn
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+        who = !git shortlog -s -- | sort -r | head -n 10
+        whosince = !sh -c 'git shortlog -s --since=$1 -- | sort -r | head -n 10' -
+        tracked = "for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads"
+        branch-name = !git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'
+        local-branch = !git checkout -t `git branch-name` -b
+        remote-branch = !sh -c 'git checkout -b $1 origin/$1' -
+        local = !git local-branch
+        up = !git checkout `git tracked | grep ^\\`git branch-name\\` | head -n 1 | awk '{print $3}' | sed s/origin\\\\\\///g`
+        downforce = !git checkout `git tracked | grep \\`git branch-name\\`$ | grep -vi origin | awk '{print $1}' | head -n 1`
+        local-tracks = !git tracked | grep `git branch-name` | grep -vi origin | awk '{print $1}'
+        down = !sh -c '[ `git tracked | grep \\`git branch-name\\` | grep -vi origin |  wc -l` == "1" ]  && git downforce || echo "Ambiguous local tracks. Delete one or checkout manually: " && tempfile=`mktemp -t git` && git local-tracks > $tempfile && cat $tempfile' -
+        co = !sh -c '[ `git tracked | awk '\\''{print $1}'\\'' | grep $1 |  wc -l` == "1" ] &&  git checkout $1 || git remote-branch $1' -
+
 [color]
         diff = auto
         status = auto
@@ -23,6 +35,7 @@
 [core]
         excludesfile = ~/.gitignore
         editor = vim
+        ignorecase = false
 [apply]
         whitespace = nowarn
 [mergetool]
