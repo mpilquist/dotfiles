@@ -17,11 +17,11 @@ in_right_pane = false
 # First step is to find our tty
 `tmux server-info`.each_line do |line|
     break if line.start_with? 'Terminals'
-    if line.start_with? 'Sessions: '
+    if line.start_with? 'Sessions:'
         in_sessions = true
         next
     end
-    if in_sessions and line =~ /^\s\d+: #{session_id}: \d+ window..*[flags=.*]/
+    if in_sessions and line =~ /^\s?\d+: #{session_id}: \d+ window..*[flags=.*]/
         in_right_session = true
         next
     end
