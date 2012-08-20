@@ -18,6 +18,9 @@ fi
 autoload -U compinit
 compinit
 
+# load prezto
+source $ZSH/zsh/omz.inc
+
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.sh) source $config_file
 
