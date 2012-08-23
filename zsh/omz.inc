@@ -50,5 +50,3 @@ zstyle ':omz:module:prompt' theme 'sorin'
 # This will make you shout: OH MY ZSHELL!
 source "$OMZ/init.zsh"
 
-# Customize to your needs...
-source ~/.profile
