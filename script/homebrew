@@ -33,21 +33,20 @@ echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH.
 brew install wget --enable-iri
 
 # Install more recent versions of some OS X tools
-#brew tap homebrew/dupes
-#brew install homebrew/dupes/vim
+brew tap homebrew/dupes
+brew install homebrew/dupes/vim
 
 # Install everything else
 brew install ack
 brew install git
 brew install tig
 brew install autojump
-brew install giter8
-brew install gnupg
-brew install haskell-platform
+#brew install giter8
+#brew install gnupg
+#brew install haskell-platform
 brew install macvim
-brew install homebrew/dupes/vim
 brew install vimpager
-brew install postgresql
+#brew install postgresql
 brew install reattach-to-user-namespace
 brew install tmux
 brew install rlwrap
