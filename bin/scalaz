@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+require 'etc'
+$scalaVersion = "2.9.2"
+$scalazVersion = "7.0.0-M3"
+$repository = "#{Etc.getpwuid.dir}/.m2/repository"
+
+def dep(g, a, v)
+  gp = g.gsub('.', '/')
+  "#{$repository}/#{gp}/#{a}/#{v}/#{a}-#{v}.jar"
+end
+
+classpath = (
+  dep("org.scalaz", "scalaz-core_#{$scalaVersion}", $scalazVersion) + ":" +
+  dep("org.scalaz", "scalaz-effect_#{$scalaVersion}", $scalazVersion) + ":" +
+  dep("org.scalaz", "scalaz-iteratee_#{$scalaVersion}", $scalazVersion)
+)
+puts "Classpath: #{classpath}"
+imports = "#{File.dirname($PROGRAM_NAME)}/scalaz.imports"
+system("scala -cp #{classpath} -Yrepl-sync -i #{imports}")
