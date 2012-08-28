@@ -18,7 +18,9 @@ subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
 
 ## install
 
-Run this:
+Make sure MacPorts is not installed. If installed follow this link to uninstall  http://guide.macports.org/chunked/installing.macports.uninstalling.html
+
+Run this to install:
 
 ```sh
 git clone https://github.com/mpilquist/dotfiles.git ~/.dotfiles
