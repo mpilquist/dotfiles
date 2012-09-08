@@ -6,8 +6,8 @@
 . script/homebrew
 
 # Install prezto
-if [[ ! -d ~/.oh-my-zsh ]] ; then
-  git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.oh-my-zsh
+if [[ ! -d ~/.zprezto ]] ; then
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
 fi
 
 # Run the install (I'd like to pull this out of rake, eventually)
