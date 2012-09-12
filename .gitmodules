@@ -4,3 +4,6 @@
 [submodule "zsh-history-substring-search/external"]
   path = zsh-history-substring-search/external
   url = http://github.com/zsh-users/zsh-history-substring-search.git
+[submodule "zsh-completions/external"]
+	path = zsh-completions/external
+	url = http://github.com/zsh-users/zsh-completions.git
