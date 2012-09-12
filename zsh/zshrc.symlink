@@ -4,8 +4,10 @@ export ZSH=$HOME/.dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Development
 
+setopt extended_glob
+
 # source every .zsh file in this rep
-for config_file ($ZSH/**/*.zsh) source $config_file
+for config_file ($ZSH/**^external/*.zsh) source $config_file
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
@@ -18,11 +20,8 @@ fi
 autoload -U compinit
 compinit
 
-# load prezto
-source $HOME/.zprezto/init.zsh
-
 # load every completion after autocomplete loads
-for config_file ($ZSH/**/completion.sh) source $config_file
+for config_file ($ZSH/**^external/completion.sh) source $config_file
 
 if which tmux 2>&1 >/dev/null; then
   test -z "$TMUX" && tmux new-session && exit

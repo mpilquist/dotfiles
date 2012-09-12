@@ -5,10 +5,5 @@
 # Assume everyone's on OS X and run Homebrew (*nix-ers beware)
 . script/homebrew
 
-# Install prezto
-if [[ ! -d ~/.zprezto ]] ; then
-  git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
-fi
-
 # Run the install (I'd like to pull this out of rake, eventually)
 rake install
