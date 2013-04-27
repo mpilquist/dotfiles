@@ -23,4 +23,8 @@ compinit
 # load every completion after autocomplete loads
 for config_file ($ZSH/**^external/completion.sh) source $config_file
 
+if which tmux 2>&1 >/dev/null; then
+  test -z "$TMUX" && tmux new-session && exit
+fi
+
 unsetopt ignoreeof
