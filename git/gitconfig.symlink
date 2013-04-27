@@ -23,6 +23,7 @@
         down = !sh -c '[ `git tracked | grep \\`git branch-name\\` | grep -vi origin |  wc -l` == "1" ]  && git downforce || echo "Ambiguous local tracks. Delete one or checkout manually: " && tempfile=`mktemp -t git` && git local-tracks > $tempfile && cat $tempfile' -
         co = !sh -c '[ `git tracked | awk '\\''{print $1}'\\'' | grep $1 |  wc -l` == "1" ] &&  git checkout $1 || git remote-branch $1' -
         cc = commit -c HEAD --reset-author
+        grepblame = !sh -c 'find . -name $1 | xargs git blame' -
         stat = status
 
 [color]
