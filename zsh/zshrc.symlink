@@ -26,3 +26,7 @@ for config_file ($ZSH/**^external/completion.sh) source $config_file
 if which tmux 2>&1 >/dev/null; then
   test -z "$TMUX" && tmux new-session && exit
 fi
+
+export VISUAL=vim
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
