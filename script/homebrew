@@ -29,7 +29,7 @@ brew tap homebrew/dupes
 brew install homebrew/dupes/vim
 
 # Install everything else
-brew install ack
+brew install ag
 brew install git
 brew install tig
 brew install autojump

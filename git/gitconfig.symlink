@@ -43,7 +43,10 @@
         prompt = false
 [help]
         autocorrect = 1
-[http]
-        sslverify = no
 [diff]
         algorithm = patience
+[user]
+  name = Michael Pilquist
+  email = mpilquist@gmail.com
+[merge]
+  tool = opendiff
