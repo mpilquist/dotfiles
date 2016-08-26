@@ -7,25 +7,29 @@ export PROJECTS=~/Development
 setopt extended_glob
 
 # source every .zsh file in this rep
-for config_file ($ZSH/**^external/*.zsh) source $config_file
+echo Sourcing external
+for config_file ($ZSH/**^external/*.zsh) echo sourcing $config_file && source $config_file
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
+echo Sourcing local
 if [[ -a ~/.localrc ]]
 then
   source ~/.localrc
 fi
 
 # initialize autocomplete here, otherwise functions won't be loaded
+echo compinit
 autoload -U compinit
 compinit
 
 # load every completion after autocomplete loads
+echo Sourcing completions
 for config_file ($ZSH/**^external/completion.sh) source $config_file
 
-if which tmux 2>&1 >/dev/null; then
-  test -z "$TMUX" && tmux new-session && exit
-fi
+#if which tmux 2>&1 >/dev/null; then
+#  test -z "$TMUX" && tmux new-session && exit
+#fi
 
 unsetopt ignoreeof
 
